@@ -1,24 +1,24 @@
 import { Link } from 'react-router-dom';
 import AuthForm from '../components/auth/AuthForm';
 
-const Login = () => {
+const Register = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow">
         <div>
-          <h2 className="text-center text-3xl font-bold text-gray-900">CampusConnect</h2>
+          <h2 className="text-center text-3xl font-bold text-gray-900">Create Account</h2>
           <p className="mt-2 text-center text-sm text-gray-600">
-            Welcome back! Please sign in to your account
+            Join CampusConnect to manage your placement journey
           </p>
         </div>
 
-        <AuthForm mode="login" />
+        <AuthForm mode="register" />
 
         <div className="text-center">
           <p className="text-sm text-gray-600">
-            Don't have an account?{' '}
-            <Link to="/register" className="font-medium text-primary hover:text-primary-dark">
-              Sign up
+            Already have an account?{' '}
+            <Link to="/login" className="font-medium text-primary hover:text-primary-dark">
+              Sign in
             </Link>
           </p>
         </div>
@@ -27,4 +27,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

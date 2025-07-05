@@ -3,14 +3,18 @@ import { AuthProvider } from './contexts/AuthContext';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import MainLayout from './components/layout/MainLayout';
 import Login from './pages/Login';
+import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
+import Profile from './pages/Profile';
 
 function App() {
   return (
     <AuthProvider>
       <Router>
         <Routes>
+          {/* Public Routes */}
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           
           {/* Protected Routes */}
           <Route
@@ -25,9 +29,18 @@ function App() {
           />
 
           {/* Redirect root to dashboard */}
-          <Route path="/" element={<Navigate to="/dashboard" replace />} />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute allowedRoles={['student', 'tpo', 'admin']}>
+                <MainLayout>
+                  <Profile />
+                </MainLayout>
+              </ProtectedRoute>
+            }
+          />
 
-          {/* Add more protected routes here */}
+          <Route path="/" element={<Navigate to="/dashboard" replace />} />
         </Routes>
       </Router>
     </AuthProvider>
