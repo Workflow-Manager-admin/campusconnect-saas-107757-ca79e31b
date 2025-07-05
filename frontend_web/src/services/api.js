@@ -80,4 +80,45 @@ export const profile = {
   },
 };
 
+export const jobs = {
+  getJobs: async (filters = {}) => {
+    const response = await api.get('/jobs/', { params: filters });
+    return response.data;
+  },
+
+  getJobDetails: async (jobId) => {
+    const response = await api.get(`/jobs/${jobId}/`);
+    return response.data;
+  },
+
+  applyForJob: async (jobId) => {
+    const response = await api.post(`/jobs/${jobId}/apply/`);
+    return response.data;
+  },
+};
+
+export const applications = {
+  getMyApplications: async () => {
+    const response = await api.get('/applications/');
+    return response.data;
+  },
+
+  getApplicationDetails: async (applicationId) => {
+    const response = await api.get(`/applications/${applicationId}/`);
+    return response.data;
+  },
+};
+
+export const placementRounds = {
+  getRounds: async (jobId) => {
+    const response = await api.get(`/jobs/${jobId}/rounds/`);
+    return response.data;
+  },
+
+  updateParticipation: async (roundId, status) => {
+    const response = await api.post(`/rounds/${roundId}/participation/`, { status });
+    return response.data;
+  },
+};
+
 export default api;
